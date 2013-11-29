@@ -1,0 +1,23 @@
+parameters:
+    event_listener.from_easy: MGD\EventsBundle\Listener\ListenerFromEasyObject
+    event_listener.subscriber: MGD\EventsBundle\Listener\SubscriberFromEasyObject
+
+services:
+    example.listener_1:
+          class: %event_listener.from_easy%
+          tags:
+              - { name: kernel.event_listener, event: mgd.register_event_id, method: onRegisterEventId }
+              - { name: kernel.event_listener, event: mgd.register_event_id, method: onRegisterEventIdSecond }
+              - { name: kernel.event_listener, event: mgd.register_event_id, method: onRegisterEventIdThird }
+              - { name: kernel.event_listener, event: mgd.register_event_id, method: onRegisterEventIdFourth }
+
+    example.listener_2:
+          class: %event_listener.from_easy%
+          tags:
+              - { name: kernel.event_listener, event: kernel.request, method: onRequest }
+
+    example.subscriber:
+          class: %event_listener.subscriber%
+          tags:
+              - { name: kernel.event_subscriber }
+
