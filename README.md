@@ -11,5 +11,3 @@ Install
 -------
 
     * Intall composer: composer install
-
-    * load Fixtures: php app/console doctrine:mongodb:fixtures:load
